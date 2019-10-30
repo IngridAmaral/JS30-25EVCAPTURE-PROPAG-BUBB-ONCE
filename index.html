@@ -40,9 +40,15 @@
   }
 </style>
 
-<button></button>
 <script>
+    const divs = document.querySelectorAll('div');
 
+    function logText(e) {
+        console.log(this.classList.value);//shows the elements three, two, one when capture:false(default), if true it will show one, two, three that's called bubbling and can be prevented
+        e.stopPropagation(); //prevents the bubbling, now the log is only the clicked element, it will no longer trigger the event on the parents elements
+    }
+
+    divs.forEach(div => div.addEventListener('click', logText, {capture: false}))
 </script>
 </body>
 </html>
